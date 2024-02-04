@@ -1,0 +1,1 @@
+/*This is parent Route file where all collections apis routing will be declared with end poitns   */
