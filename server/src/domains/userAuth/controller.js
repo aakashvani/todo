@@ -2,7 +2,7 @@
 
 const User =require("./model")
 const jwt = require('jsonwebtoken');
-
+const logger=require("../../utils/logger/logger")
 require('dotenv').config();
 
 const generateToken=(user)=>{   
@@ -48,6 +48,9 @@ const login=async(req)=>{
           };
        }
        const token = generateToken(user)  
+       logger.info(
+        `: transactionId: => successfully logged in - ${null}`
+      );
        return {
         infomess: "success",
         infodata: {email:user.email,token}
