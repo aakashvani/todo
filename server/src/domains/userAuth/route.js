@@ -8,8 +8,8 @@ const router = express.Router();
 router.post("/register",async(req,res)=>{
     try{
       const registeruser=await register(req)
-      console.log("register",register)
-      return registeruser
+      // console.log("register",register())
+      return res.send(registeruser)
     }
     catch(err){
         console.log(err)
@@ -19,7 +19,7 @@ router.post("/register",async(req,res)=>{
 router.post("/login",async(req,res)=>{
     try{
       const loginuser=await login(req)
-      return loginuser
+      return res.send(loginuser)
     }
     catch(err){
         console.log(err)
