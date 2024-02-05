@@ -1,6 +1,7 @@
 /* For routing using methods but not functionality  */
 const express=require("express");
 const {register,login}=require("./controller.js")
+const resGen=require("../../utils/response/resGenerator.js")
 const router = express.Router();
 
 // app.use(express.json());
@@ -8,8 +9,8 @@ const router = express.Router();
 router.post("/register",async(req,res)=>{
     try{
       const registeruser=await register(req)
-      console.log("register",register)
-      return registeruser
+      
+      return resGen(res,registeruser)
     }
     catch(err){
         console.log(err)
@@ -19,7 +20,7 @@ router.post("/register",async(req,res)=>{
 router.post("/login",async(req,res)=>{
     try{
       const loginuser=await login(req)
-      return loginuser
+      return resGen(res,loginuser)
     }
     catch(err){
         console.log(err)
