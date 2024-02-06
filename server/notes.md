@@ -1,6 +1,6 @@
 ### Schema design
 
-
+```
 todolist collection [
     {
         taskname:string
@@ -10,7 +10,8 @@ todolist collection [
         taskDate:date
     }
 ]
-
+```
+```
 user [
     {
         fullname:string,
@@ -19,4 +20,4 @@ user [
 
     }
 ]
-
+```
