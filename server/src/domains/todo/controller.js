@@ -30,7 +30,8 @@ const updateTodo=async(req,res)=>{
         `: todoId: => successfully logged in - ${null}`
       );
       console.log(todo)
-       return { todo };
+       return { infomess: "success",
+       infodata: {todo} };
     }
     catch(err){
         return {message:err.message}
@@ -45,7 +46,8 @@ const getTodo=async(req,res)=>{
         `: todoId: => successfully logged in - ${null}`
       );
       console.log("get the all todos",todo)
-       return { todo };
+       return { infomess: "success",
+       infodata: {todo} };
     }
     catch(err){
         return {message:err.message}
