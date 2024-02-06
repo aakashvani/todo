@@ -2,6 +2,7 @@
 
 const User =require("./model")
 const jwt = require('jsonwebtoken');
+const logger=require("../../utils/logger/logger")
 require('dotenv').config();
 
 const generateToken=(user)=>{   
@@ -12,14 +13,17 @@ const register=async(req)=>{
     try{
         let user=await User.findOne({email:req.body.email})
        if(user){
-           return {message:"Email already exists"}
+        return {
+            infomess: "emailexist",
+            infodata: null
+          };
        }   
       user=await User.create(req.body);
       const token = generateToken(user)  
       return {user,token};
     }
     catch(err){
-        res.send({message:err.message})
+        return {message:err.message}
     }
 }
 
@@ -27,19 +31,34 @@ const register=async(req)=>{
 
 const login=async(req)=>{
     try{
-        const user=await User.findOne({email:req.body.email})
+        const user = await User.findOne({ email: req.body.email });
+
+        
         if(!user){
-            return "wrong email or password"
+            return {
+                infomess: "invacred",
+                infodata: null
+              };
         }
         const match=user.checkPassword(req.body.password)
        if(!match){
-        return "wrong email or password"
+        return {
+            infomess: "invacred",
+            infodata: null
+          };
        }
        const token = generateToken(user)  
-      return {user,token};
+       logger.info(
+        `: transactionId: => successfully logged in - ${null}`
+      );
+       return {
+        infomess: "success",
+        infodata: {email:user.email,token}
+      };
+      
     }
     catch(err){
-        res.status(400).send({message:err.message})
+        return {message:err.message}
     }
 }
 
