@@ -1,0 +1,24 @@
+#navbar_container{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 2%;
+    border-radius: 5px;
+    border: 1px solid black;
+    background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+}
+/* #navbar_container>h3{
+
+} */
+.sub-nav-container-left{
+    display: flex;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+}
+.sub-nav-container-right{
+    display: flex;
+    gap:20px;
+}
+.sub-nav-container-right>button{
+    background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+}
